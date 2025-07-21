@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DOS + MASM + x86 Setup Practical</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;       
+    }
+    h1, h2 {
+      color: #4b0082;
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    pre {
+      background: #272822;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    .highlight {
+      background: #e0d7f4;
+      padding: 10px;
+      border-left: 4px solid #4b0082;
+      margin: 10px 0;
+    }
+    ul, ol {
+      padding-left: 20px;
+    }
+    .btn{
+      display: inline-block;
+      background-color: #4b0082;
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      margin: 5px 5px 15px 0;
+    }
+    .btn:hover {
+      background-color: #36005a;
+    }
+    code{
+      background: #eee;
+      padding: 2px 5px;
+      border-radius: 3px;
+      font-family: monospace;
+    }
+    .back-button-container {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .back-btn {
+      display: inline-block;
+      background-color: #4b0082;
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background-color: #36005a;
+    }
+  </style>
+  <script>
+    // Disable right-click
+    document.addEventListener('contextmenu', function (e) {
+      e.preventDefault();
+      alert('Right-click is disabled on this page.');
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="back-button-container">
+      <a href="../index.html" class="back-btn">← Back to Home</a>
+    </div>
+    <h1>Practical 2</h1>
+    <p>
+       Implementation of various ALU operations (ADD, SUB, MUL, DIV, AND, OR,
+       XOR, NOT) through assembly language programming for 8086 using MASM and
+       Debug.
+    </p>
+    <h2>Writing Your First Assembly Program</h2>
+    <p>Create a file named <code>exp2.asm</code> in Notepad and save it in <code>D:\TASM</code>:</p>
+    <pre>
+.model small
+.stack 100h
+.data
+
+.code
+main proc
+ 	mov ax, @data
+ 	mov ds, ax
+
+ 	; ADD operation
+ 	mov al, 05h
+ 	add al, 03h   ; AL = 08h
+
+ 	; SUB operation
+ 	sub al, 02h   ; AL = 06h
+
+ 	; MUL operation
+ 	mov al, 04h
+ 	mov bl, 03h
+ 	mul bl        ; AX = AL * BL = 0Ch
+
+ 	; DIV operation
+ 	mov ax, 0012h ; 18 in decimal
+ 	mov bl, 06h
+ 	div bl        ; AL = 03h, AH = remainder
+
+ 	; AND operation
+ 	mov al, 0Fh
+ 	and al, 0Ah   ; AL = 0Ah
+
+ 	; OR operation
+ 	mov al, 04h
+ 	or al, 01h	; AL = 05h
+
+ 	; XOR operation
+ 	mov al, 07h
+ 	xor al, 03h   ; AL = 04h
+
+ 	; NOT operation
+ 	mov al, 0F0h
+ 	not al        ; AL = 0Fh
+
+ 	mov ah, 4ch
+ 	int 21h
+main endp
+end main
+    </pre>
+    <h2>Compilation and Execution using TASM</h2>
+    <p>Inside DOSBox, compile and run:</p>
+    <pre>
+    tasm filename.asm
+    tlink filename.obj
+    </pre>
+    <h2>Using Debug Tool</h2>
+    <p>Run Debug:</p>
+    <pre>td filename.exe</pre>
+   
+  </div>
+</body>
+</html>

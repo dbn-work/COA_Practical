@@ -57,6 +57,25 @@
       border-radius: 3px;
       font-family: monospace;
     }
+    .back-button-container {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .back-btn {
+      display: inline-block;
+      background-color: #4b0082;
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background-color: #36005a;
+    }
   </style>
   <script>
     // Disable right-click
@@ -68,7 +87,10 @@
 </head>
 <body>
   <div class="container">
-    <h1>Practical 2</h1>
+    <div class="back-button-container">
+      <a href="../index.html" class="back-btn">← Back to Home</a>
+    </div>
+    <h1>Practical 3</h1>
     <p>
        Implementation of various ALU operations (ADD, SUB, MUL, DIV, AND, OR,
        XOR, NOT) through assembly language programming for 8086 using MASM and

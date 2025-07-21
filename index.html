@@ -19,11 +19,170 @@
     }
 
     header, footer {
-      background-color: #2d3e50;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: #fff;
+      padding: 15px 0;
+      box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+      position: relative;
       text-align: center;
-      padding: 20px 0;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .header-container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin: 0;
+      color: #ffffff;
+      font-weight: 600;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .header-buttons {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: nowrap;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 100%;
+      background: linear-gradient(145deg, #ffffff, #f8f9fa);
+      min-width: 300px;
+      border-radius: 15px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.07);
+      z-index: 1000;
+      margin-top: 5px;
+      overflow: hidden;
+      animation: slideDown 0.4s ease;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .dropdown-content::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: 0;
+      right: 0;
+      height: 10px;
+      background: transparent;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-btn {
+      background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+      color: white;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+      white-space: nowrap;
+      position: relative;
+    }
+
+    .info-btn {
+      background: linear-gradient(135deg, #4ecdc4, #44a08d) !important;
+      box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3) !important;
+    }
+
+    .dropdown-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+      background: linear-gradient(135deg, #ee5a24, #ff6b6b);
+    }
+
+    .info-btn:hover {
+      box-shadow: 0 6px 20px rgba(78, 205, 196, 0.4) !important;
+      background: linear-gradient(135deg, #44a08d, #4ecdc4) !important;
+    }
+
+    .dropdown-item {
+      color: #2c3e50;
+      padding: 15px 20px;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+      background: transparent;
+    }
+
+    .dropdown-item:hover {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      transform: translateX(5px);
+      padding-left: 25px;
+    }
+
+    .dropdown-item:first-child {
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+    }
+
+    .dropdown-item:last-child {
+      border-bottom: none;
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+    }
+
+    .dropdown-item strong {
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .dropdown-item:hover strong {
+      color: #ffffff;
+    }
+
+    .dropdown-item a {
+      color: #2c3e50;
+      text-decoration: none;
+      display: block;
+      width: 100%;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .dropdown-item:hover a {
+      color: #ffffff;
+    }
+
+    .dropdown-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 4px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      transform: scaleY(0);
+      transition: transform 0.3s ease;
+    }
+
+    .dropdown-item:hover::before {
+      transform: scaleY(1);
     }
 
     main {
@@ -33,11 +192,6 @@
       background: #fff;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 10px;
     }
 
     h2 {
@@ -96,11 +250,43 @@
       border-radius: 8px;
       margin-top: 10px;
     }
+    .manual-link {
+      color: #1c3b6f;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .manual-link:hover {
+      color: #4a90e2;
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>COA Practical Codes</h1>
+    <div class="header-container">
+      <h1>COA Practical Codes</h1>
+      <div class="header-buttons">
+        <div class="dropdown">
+          <button class="dropdown-btn info-btn">Info ▼</button>
+          <div class="dropdown-content">
+            <div class="dropdown-item"><strong>Faculty Name:</strong> Mrs. Shrunkala Naik,Mr.Bhaskar Dhuri</div>
+            <div class="dropdown-item"><strong>College:</strong> Yashwantrao Bhonsale Institute of Technology</div>
+            <div class="dropdown-item"><strong>Subject:</strong> Computer Organization & Architecture</div>
+            <div class="dropdown-item"><strong>Semester:</strong> III</div>
+            <div class="dropdown-item"><strong>Academic Year:</strong> 2025-26</div>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="dropdown-btn">Useful Links ▼</button>
+          <div class="dropdown-content">
+              <div class="dropdown-item"><a href="Useful_link/Experiment Manual Write.pdf" target="_blank">Manual Format</a></div>
+            <div class="dropdown-item"><a href="https://www.tutorialspoint.com/assembly_programming/" target="_blank">Assembly Programming Tutorial</a></div>
+            <div class="dropdown-item"><a href="CoA Lab Manual2025-26 sem III.pdf" target="_blank">Experiment List Pdf</a></div>
+            <!-- <div class="dropdown-item"><a href="#" target="_blank">Assembly Q&A</a></div> -->
+          </div>
+        </div>
+      </div>
+    </div>
   </header>
 
   <main>
@@ -109,25 +295,145 @@
     </section>
 
     <section>
-      <a href="CoA Lab Manual2025-26 sem III.pdf" target="_blank"> <h2>Experiments List</h2></a>
-
+      <h2><a href="CoA Lab Manual2025-26 sem III.pdf" target="_blank" class="manual-link">Experiments List</a></h2>
       <div class="experiment-card">
-        <a href="Experiment1/PR1.html" class="experiment-link">Experiment 1: DOS + MASM + x86 Setup</a>
+        <a href="Experiments/PR1.html" class="experiment-link">Experiment 1: DOS + MASM + x86 Setup</a>
       </div>
       <div class="experiment-card">
-        <a href="Experiment1/pr2.html" class="experiment-link">Experiment 2: Arithemetic and Logical Operation</a>
+        <a href="Experiments/pr2.html" class="experiment-link">Experiment 2: Arithemetic and Logical Operation</a>
       </div>
       <div class="experiment-card">
-        <a href="#exp3" class="experiment-link">Experiment 3: Memory Management Techniques</a>
+        <a href="Experiments/pr3 .html" class="experiment-link">Experiment 3: Memory Management Techniques</a>
       </div>
-
       <div class="experiment-card">
-        <a href="#exp4" class="experiment-link">Experiment 4: I/O Operations in Assembly</a>
+        <a href="Experiments/pr4.html" class="experiment-link">Experiment 4: I/O Operations in Assembly</a>
       </div>
+      <div class="experiment-card">
+        <a href="Experiments/pr5.html" class="experiment-link">Experiment 5: String Operations and Manipulation</a>
+      </div>
+      <!-- <div class="experiment-card">
+        <a href="Experiments/pr6.html" class="experiment-link">Experiment 6: Subroutines and Procedures</a>
+      </div>
+      <div class="experiment-card">
+        <a href="Experiments/pr7.html" class="experiment-link">Experiment 7: Interrupt Handling</a>
+      </div>
+      <div class="experiment-card">
+        <a href="Experiments/pr8.html" class="experiment-link">Experiment 8: Stack Operations</a>
+      </div>
+      <div class="experiment-card">
+        <a href="Experiments/pr9.html" class="experiment-link">Experiment 9: Loop and Conditional Statements</a>
+      </div>
+      <div class="experiment-card">
+        <a href="Experiments/pr10.html" class="experiment-link">Experiment 10: Array Processing</a>
+      </div>
+      <div class="experiment-card">
+        <a href="Experiments/pr11.html" class="experiment-link">Experiment 11: File Operations</a>
+      </div>
+      <div class="experiment-card">
+        <a href="Experiments/pr12.html" class="experiment-link">Experiment 12: Advanced Assembly Programming</a>
+      </div> -->
     </section>
   </main>
   <footer>
     &copy; 2025 COA Practicals. All rights reserved.
   </footer>
+  <script>
+    // Disable right-click
+    document.addEventListener('contextmenu', function (e) {
+      e.preventDefault();
+      alert('Right-click is disabled on this page.');
+    });
+
+    // Disable keyboard shortcuts
+    document.addEventListener('keydown', function (e) {
+      // Disable Ctrl+C, Ctrl+A, Ctrl+V, Ctrl+X, Ctrl+S, Ctrl+P
+      if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 65 || e.keyCode === 86 || e.keyCode === 88 || e.keyCode === 83 || e.keyCode === 80)) {
+        e.preventDefault();
+        alert('Copy/Paste operations are disabled on this page.');
+        return false;
+      }
+      
+      // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+      if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || (e.ctrlKey && e.keyCode === 85)) {
+        e.preventDefault();
+        alert('Developer tools are disabled on this page.');
+        return false;
+      }
+
+      // Disable Print Screen, Alt+Print Screen, Windows+Print Screen
+      if (e.keyCode === 44 || (e.altKey && e.keyCode === 44) || (e.metaKey && e.keyCode === 44)) {
+        e.preventDefault();
+        alert('Screenshots and snapshots are disabled on this page.');
+        return false;
+      }
+
+      // Disable Windows+Shift+S (Snipping Tool)
+      if (e.metaKey && e.shiftKey && e.keyCode === 83) {
+        e.preventDefault();
+        alert('Snipping tool is disabled on this page.');
+        return false;
+      }
+
+      // Disable Ctrl+Shift+X (some screenshot tools)
+      if (e.ctrlKey && e.shiftKey && e.keyCode === 88) {
+        e.preventDefault();
+        alert('Screenshot tools are disabled on this page.');
+        return false;
+      }
+    });
+
+    // Disable text selection
+    document.addEventListener('selectstart', function (e) {
+      e.preventDefault();
+    });
+
+    // Disable drag
+    document.addEventListener('dragstart', function (e) {
+      e.preventDefault();
+    });
+
+    // Additional screenshot protection
+    document.addEventListener('keyup', function (e) {
+      if (e.keyCode === 44) {
+        alert('Screenshots and snapshots are not allowed on this page.');
+      }
+    });
+
+    // Blur page when user switches tabs or loses focus
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        document.body.style.filter = 'blur(10px)';
+        document.body.style.userSelect = 'none';
+      } else {
+        document.body.style.filter = 'none';
+        document.body.style.userSelect = 'none';
+      }
+    });
+
+    // Blur on window focus loss
+    window.addEventListener('blur', function() {
+      document.body.style.filter = 'blur(10px)';
+    });
+
+    window.addEventListener('focus', function() {
+      document.body.style.filter = 'none';
+    });
+
+    // Prevent common screenshot APIs
+    if (navigator.mediaDevices && navigator.mediaDevices.getDisplayMedia) {
+      const originalGetDisplayMedia = navigator.mediaDevices.getDisplayMedia;
+      navigator.mediaDevices.getDisplayMedia = function() {
+        alert('Screen capture is not allowed on this page.');
+        return Promise.reject(new Error('Screen capture blocked'));
+      };
+    }
+
+    // Disable print
+    window.addEventListener('beforeprint', function(e) {
+      e.preventDefault();
+      alert('Printing is disabled on this page.');
+      return false;
+    });
+  </script>
 </body>
 </html>
