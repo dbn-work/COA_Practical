@@ -205,29 +205,29 @@
       e.preventDefault();
     });
 
-    // Enhanced visibility change protection
-    document.addEventListener('visibilitychange', function() {
-      if (document.hidden) {
-        document.body.style.filter = 'blur(15px)';
-        document.body.style.userSelect = 'none';
-        document.body.style.pointerEvents = 'none';
-      } else {
-        document.body.style.filter = 'none';
-        document.body.style.userSelect = 'none';
-        document.body.style.pointerEvents = 'auto';
-      }
-    });
+    // // Enhanced visibility change protection
+    // document.addEventListener('visibilitychange', function() {
+    //   if (document.hidden) {
+    //     document.body.style.filter = 'blur(15px)';
+    //     document.body.style.userSelect = 'none';
+    //     document.body.style.pointerEvents = 'none';
+    //   } else {
+    //     document.body.style.filter = 'none';
+    //     document.body.style.userSelect = 'none';
+    //     document.body.style.pointerEvents = 'auto';
+    //   }
+    // });
 
-    // Enhanced blur on window focus loss
-    window.addEventListener('blur', function() {
-      document.body.style.filter = 'blur(15px)';
-      document.body.style.userSelect = 'none';
-    });
+    // // Enhanced blur on window focus loss
+    // window.addEventListener('blur', function() {
+    //   document.body.style.filter = 'blur(15px)';
+    //   document.body.style.userSelect = 'none';
+    // });
 
-    window.addEventListener('focus', function() {
-      document.body.style.filter = 'none';
-      document.body.style.userSelect = 'none';
-    });
+    // window.addEventListener('focus', function() {
+    //   document.body.style.filter = 'none';
+    //   document.body.style.userSelect = 'none';
+    // });
 
     // Block screenshot APIs more aggressively
     if (navigator.mediaDevices && navigator.mediaDevices.getDisplayMedia) {
@@ -263,14 +263,14 @@
       }
     });
 
-    // Additional protection - hide content briefly on suspicious activity
-    let suspiciousActivity = false;
-    document.addEventListener('keydown', function(e) {
-      if (e.ctrlKey || e.altKey || e.metaKey) {
-        suspiciousActivity = true;
-        setTimeout(() => { suspiciousActivity = false; }, 1000);
-      }
-    });
+    // // Additional protection - hide content briefly on suspicious activity
+    // let suspiciousActivity = false;
+    // document.addEventListener('keydown', function(e) {
+    //   if (e.ctrlKey || e.altKey || e.metaKey) {
+    //     suspiciousActivity = true;
+    //     setTimeout(() => { suspiciousActivity = false; }, 1000);
+    //   }
+    // });
 
     // CSS to prevent selection
     document.head.insertAdjacentHTML('beforeend', `
