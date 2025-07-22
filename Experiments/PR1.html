@@ -5,7 +5,7 @@
   <title>DOS + MASM + x86 Setup Practical</title>
   <style>
     body {
-      font-family: "Segoe UI", sans-serif;
+      font-family: "Montserrat", "Nunito", "Segoe UI", "Roboto", "Helvetica Neue", Arial, "Liberation Sans", "Noto Sans", sans-serif;
       background-color: #f4f4f9;
       color: #333;
       line-height: 1.6;
@@ -14,6 +14,7 @@
     }
     h1, h2 {
       color: #4b0082;
+      font-family: "Montserrat", "Nunito", "Segoe UI", "Roboto", "Helvetica Neue", Arial, "Liberation Sans", "Noto Sans", sans-serif;
     }
     .container {
       max-width: 1000px;
@@ -300,14 +301,17 @@
     </div>
     <h1>Practical 1</h1>
     <p>To install and configure DOSBox, MASM, and Debug tool, and simulate x86 architecture for executing 8086 Assembly Language Programs.</p>
-    <h2>Theory</h2>
-    <ul>
-      <li><strong>DOS:</strong> Disk Operating System that allows running 16-bit programs.</li>
-      <li><strong>DOSBox:</strong> A DOS emulator that supports legacy 8086 tools on modern systems.</li>
-      <li><strong>MASM:</strong> Microsoft Macro Assembler to compile and link Assembly code.</li>
-      <li><strong>Debug:</strong> A command-line utility to debug and inspect low-level assembly programs.</li>
-      <li><strong>x86 Mode:</strong> Refers to 8086 16-bit architecture simulation (registers like AX, BX, etc.).</li>
-    </ul>
+
+    <!-- Add Theory section with 4 important questions -->
+    <h2 id="theory-section">Theory</h2>
+    <div class="highlight">
+      <ol>
+        <li>What is the purpose of using DOSBox for 8086 assembly programming?</li>
+        <li>Explain the role of MASM and Debug tools in the development of assembly language programs.</li>
+        <li>What are the Data registers in x86 architecture and their functions?</li>
+        <li>What is the role of assembler, linker, and debugger in the execution of an assembly program?</li>
+      </ol>
+    </div>
     <h2>Installation Steps (DOSBox & MASM)</h2>
     <ol>
      <li>Download and install <a href="https://www.dosbox.com/download.php?main=1" target="_blank">DOSBox</a>.</li>
@@ -316,8 +320,15 @@
      <li>Install MASM on your system, but make sure that the MASM folder is located in the D drive or any drive other than the C drive.</li>
     </ol>
     <a class="btn" href="https://drive.google.com/drive/folders/10VNMKDnqieKi5tldf-j7NBHHGmP9HVtH?usp=drive_link" target="_blank">Download MASM</a>
+    <h2>TASM Installation Process</h2>
+    <ol>
+      <li>Download the <a href="https://cspsyco.blogspot.com/p/tasm-download.html" target="_blank">TASM</a> setup file from the provided link.</li>
+      <li>Extract the downloaded TASM archive to a folder (recommended: <code>D:\TASM</code>).</li>
+      <li>Ensure the TASM folder contains <code>TASM.EXE</code>, <code>TLINK.EXE</code>, and other required files.</li>
+      <li>Mount the TASM folder in DOSBox using <code>mount d d:\TASM</code> and switch to the D: drive.</li>
+      <li>You can now assemble and link assembly programs using TASM and TLINK inside DOSBox.</li>
+    </ol>
     <a class="btn" href="https://cspsyco.blogspot.com/p/tasm-download.html" target="_blank">Download TASM</a>
-   
     <h2>Mounting in DOSBox</h2>
     <p>Open DOSBox and type:</p>
     <div class="highlight">

@@ -96,7 +96,18 @@
        XOR, NOT) through assembly language programming for 8086 using MASM and
        Debug.
     </p>
-    <h2>Writing Your First Assembly Program</h2>
+    <h2 id="theory-section">Theory</h2>
+    <div class="highlight">
+      <ol>
+        <li>What is the function of the ALU in a microprocessor?</li>
+        <li>Explain the difference between ADD, SUB, MUL, and DIV instructions in 8086 assembly.</li>
+        <li>How does the AND, OR, XOR, and NOT operations affect the contents of a register?</li>
+        <li>Describe the role of the <code>MUL</code> and <code>DIV</code> instructions in 8086.</li>
+        <li>Why is it necessary to initialize the data segment register (<code>DS</code>) before performing operations?</li>
+        <li>What is the significance of the <code>int 21h</code> instruction at the end of the program?</li>
+      </ol>
+    </div>
+    <h2>Code</h2>
     <p>Create a file named <code>exp2.asm</code> in Notepad and save it in <code>D:\TASM</code>:</p>
     <pre>
 .model small
@@ -155,7 +166,6 @@ end main
     <h2>Using Debug Tool</h2>
     <p>Run Debug:</p>
     <pre>td filename.exe</pre>
-   
   </div>
 </body>
 </html>

@@ -90,59 +90,44 @@
     <div class="back-button-container">
       <a href="../index.html" class="back-btn">← Back to Home</a>
     </div>
-    <h1>Practical 3</h1>
+    <h1>
+      Practical 3
+    </h1>
     <p>
-       Implementation of various ALU operations (ADD, SUB, MUL, DIV, AND, OR,
-       XOR, NOT) through assembly language programming for 8086 using MASM and
-       Debug.
+       To implement block transfer and exchange using SI, DI registers.
     </p>
-    <h2>Writing Your First Assembly Program</h2>
+    <h2 id="theory-section">Theory</h2>
+    <div class="highlight">
+      <ol>
+        <li>What is the purpose of SI and DI registers in 8086 assembly language?</li>
+        <li>Explain the block transfer operation using <code>REP MOVSB</code> instruction.</li>
+        <li>How does the <code>CLD</code> instruction affect string operations in 8086?</li>
+        <li>Why is it necessary to initialize both <code>DS</code> and <code>ES</code> segment registers for block transfer?</li>
+      </ol>
+    </div>
+    <h2>Code</h2>
     <p>Create a file named <code>exp2.asm</code> in Notepad and save it in <code>D:\TASM</code>:</p>
     <pre>
 .model small
 .stack 100h
 .data
+src db 10h,20h,30h,40h,50h,60h,70h,80h,90h,0A0h
+dest db 10 dup(?)
 
 .code
 main proc
- 	mov ax, @data
- 	mov ds, ax
+mov ax, @data
+mov ds, ax
+mov es, ax
 
- 	; ADD operation
- 	mov al, 05h
- 	add al, 03h   ; AL = 08h
+lea si, src
+lea di, dest
+mov cx, 10
+cld
+rep movsb
 
- 	; SUB operation
- 	sub al, 02h   ; AL = 06h
-
- 	; MUL operation
- 	mov al, 04h
- 	mov bl, 03h
- 	mul bl        ; AX = AL * BL = 0Ch
-
- 	; DIV operation
- 	mov ax, 0012h ; 18 in decimal
- 	mov bl, 06h
- 	div bl        ; AL = 03h, AH = remainder
-
- 	; AND operation
- 	mov al, 0Fh
- 	and al, 0Ah   ; AL = 0Ah
-
- 	; OR operation
- 	mov al, 04h
- 	or al, 01h	; AL = 05h
-
- 	; XOR operation
- 	mov al, 07h
- 	xor al, 03h   ; AL = 04h
-
- 	; NOT operation
- 	mov al, 0F0h
- 	not al        ; AL = 0Fh
-
- 	mov ah, 4ch
- 	int 21h
+mov ah, 4ch
+int 21h
 main endp
 end main
     </pre>
@@ -155,15 +140,6 @@ end main
     <h2>Using Debug Tool</h2>
     <p>Run Debug:</p>
     <pre>td filename.exe</pre>
-    <h2>Registers in x86</h2>
-    <ul>
-      <li><code>AX</code>, <code>BX</code>, <code>CX</code>, <code>DX</code> - Data registers</li>
-      <li><code>SI</code>, <code>DI</code> - Index registers</li>
-      <li><code>SP</code>, <code>BP</code> - Stack registers</li>
-      <li><code>CS</code>, <code>DS</code>, <code>SS</code>, <code>ES</code> - Segment registers</li>
-      <li><code>IP</code> - Instruction pointer</li>
-      <li><code>FLAGS</code> - Status flags</li>
-    </ul>
-  </div>
+    </div>
 </body>
 </html>
