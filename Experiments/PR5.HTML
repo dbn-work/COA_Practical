@@ -243,45 +243,70 @@
       <a href="../index.html" class="back-btn">← Back to Home</a>
     </div>
     <h1>
-      Practical 3
+      Practical 5
     </h1>
     <p>
-       To implement block transfer and exchange using SI, DI registers.
+       To perform BCD addition of two 8-bit numbers from keyboard using INT 21H. 
     </p>
     <h2 id="theory-section">Theory</h2>
     <div class="highlight">
       <ol>
-        <li>What is the purpose of SI and DI registers in 8086 assembly language?</li>
-        <li>Explain the block transfer operation using <code>REP MOVSB</code> instruction.</li>
-        <li>How does the <code>CLD</code> instruction affect string operations in 8086?</li>
-        <li>Why is it necessary to initialize both <code>DS</code> and <code>ES</code> segment registers for block transfer?</li>
+        <li>What is BCD addition and how is it different from binary addition?</li>
+        <li>Explain the role of INT 21H in accepting input and displaying output in 8086 assembly.</li>
+        <li>Why is the DAA (Decimal Adjust after Addition) instruction used in BCD addition?</li>
+        <li>Describe the steps to perform BCD addition of two 8-bit numbers using keyboard input in 8086 assembly.</li>
       </ol>
     </div>
     <h2>Code</h2>
-    <p>Create a file named <code>exp2.asm</code> in Notepad and save it in <code>D:\TASM</code>:</p>
+    <p>Create a file named <code>exp5.asm</code> in Notepad and save it in <code>D:\TASM</code>:</p>
     <pre>
-.model small
-.stack 100h
-.data
-src db 10h,20h,30h,40h,50h,60h,70h,80h,90h,0A0h
-dest db 10 dup(?)
-
-.code
-main proc
-mov ax, @data
-mov ds, ax
-mov es, ax
-
-lea si, src
-lea di, dest
-mov cx, 10
-cld
-rep movsb
-
-mov ah, 4ch
-int 21h
-main endp
-end main
+ .model small 
+ .stack 100h 
+ .data 
+  msg1 db "Enter first BCD digit: $" 
+  msg2 db 0Dh,0Ah,"Enter second BCD digit: $" 
+  resmsg db 0Dh,0Ah,"Sum = $" 
+ .code 
+ main proc 
+  mov ax, @data 
+  mov ds, ax 
+ 
+  ; Display first prompt 
+  lea dx, msg1 
+  mov ah, 09h 
+  int 21h 
+ 
+  ; Input first digit 
+  mov ah, 01h 
+  int 21h 
+  sub al, 30h     ; Convert ASCII to numeric 
+  mov bl, al 
+ 
+  ; Display second prompt 
+  lea dx, msg2 
+  mov ah, 09h 
+  int 21h 
+ 
+  ; Input second digit 
+  mov ah, 01h 
+  int 21h 
+  sub al, 30h 
+  add al, bl 
+  daa          ; BCD adjust 
+  add al, 30h     ; Convert back to ASCII 
+ 
+  ; Display result message 
+  lea dx, resmsg 
+  mov ah, 09h 
+  int 21h 
+  ; Display result 
+  mov dl, al 
+  mov ah, 02h 
+  int 21h 
+  mov ah, 4ch 
+  int 21h 
+  main endp 
+  end main 
     </pre>
     <h2>Compilation and Execution using TASM</h2>
     <p>Inside DOSBox, compile and run:</p>

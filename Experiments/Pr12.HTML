@@ -243,10 +243,10 @@
       <a href="../index.html" class="back-btn">← Back to Home</a>
     </div>
     <h1>
-      Practical 3
+      Practical 12
     </h1>
     <p>
-       To implement block transfer and exchange using SI, DI registers.
+      To display flag register content on the monitor.
     </p>
     <h2 id="theory-section">Theory</h2>
     <div class="highlight">
@@ -260,28 +260,36 @@
     <h2>Code</h2>
     <p>Create a file named <code>exp2.asm</code> in Notepad and save it in <code>D:\TASM</code>:</p>
     <pre>
-.model small
-.stack 100h
-.data
-src db 10h,20h,30h,40h,50h,60h,70h,80h,90h,0A0h
-dest db 10 dup(?)
-
-.code
-main proc
-mov ax, @data
+.model small               
+.data                                                                                                                                                                       
+a dw 2021
+b dw 04H
+msg db "XXXXODITSZXAXPXC",13,10,'$ ;   Message  to  be  displayed  above  the flag  bit …………………………………………………………..values  as  the sequence of flag bit name
+msg1 db "Flag Contents:$"                                                                                                                                                                    
+.code                                                                                                                                                                       
+Start : mov ax, @data		;Initialize data segment
 mov ds, ax
-mov es, ax
-
-lea si, src
-lea di, dest
-mov cx, 10
-cld
-rep movsb
-
-mov ah, 4ch
+xor al,al 			;Perform some logical operation to update the flag bits
+lea dx,msg			;Display  the  message  of  the  flag  bit  format  using  INT 21H          
+mov ah,09h			;type 09H
 int 21h
-main endp
-end main
+lea dx,msg1			;Display another message using INT 21H type 09H
+mov ah,09h
+int 21h
+Pushf 				; Get the flag contents into register BX using stack
+pop bx
+mov cl,15			;Initialize counter to read the 16 bits of flag register
+Again : rcr bx,1 		;Rotate  the  value  of  register  bx  by  1,  to  shift  the  first  bit  in carry flag
+mov dl,30H			;Convert the bit ‘0’ or ‘1’ to corresponding ASCII values 30H or 31H
+jnc over
+mov dl,31H
+Over : MOV ah,02h		;Display the character using INT 21H type 02H
+int 21h
+loop again			;Repeat for all 16 bits
+mov ah, 4cH			;Terminate the program
+int 21H
+end
+
     </pre>
     <h2>Compilation and Execution using TASM</h2>
     <p>Inside DOSBox, compile and run:</p>

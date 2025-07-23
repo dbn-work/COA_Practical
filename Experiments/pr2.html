@@ -83,6 +83,181 @@
       e.preventDefault();
       alert('Right-click is disabled on this page.');
     });
+
+    // Disable keyboard shortcuts
+    document.addEventListener('keydown', function (e) {
+      // Block individual modifier keys
+      if (e.keyCode === 16 || e.keyCode === 17 || e.keyCode === 91 || e.keyCode === 92) { // Shift, Ctrl, Windows keys
+        e.preventDefault();
+        alert('Modifier keys are disabled on this page.');
+        return false;
+      }
+
+      // Enhanced Windows+Shift+S blocking (Snipping Tool) - Multiple detection methods
+      if ((e.metaKey || e.keyCode === 91 || e.keyCode === 92) && e.shiftKey && (e.keyCode === 83 || e.key === 's' || e.key === 'S')) {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        document.body.style.display = 'none';
+        setTimeout(() => { document.body.style.display = 'block'; }, 300);
+        alert('Windows Snipping Tool (Win+Shift+S) is disabled on this page.');
+        return false;
+      }
+
+      // Additional Snipping Tool variations
+      if (e.shiftKey && e.keyCode === 83 && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        e.stopPropagation();
+        document.body.style.display = 'none';
+        setTimeout(() => { document.body.style.display = 'block'; }, 300);
+        alert('Snipping shortcuts are disabled.');
+        return false;
+      }
+
+      // Disable Ctrl+C, Ctrl+A, Ctrl+V, Ctrl+X, Ctrl+S, Ctrl+P
+      if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 65 || e.keyCode === 86 || e.keyCode === 88 || e.keyCode === 83 || e.keyCode === 80)) {
+        e.preventDefault();
+        alert('Copy/Paste operations are disabled on this page.');
+        return false;
+      }
+      
+      // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+      if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || (e.ctrlKey && e.keyCode === 85)) {
+        e.preventDefault();
+        alert('Developer tools are disabled on this page.');
+        return false;
+      }
+
+      // Enhanced Print Screen blocking - all variations
+      if (e.keyCode === 44 || e.key === 'PrintScreen' || e.code === 'PrintScreen') {
+        e.preventDefault();
+        e.stopPropagation();
+        document.body.style.display = 'none';
+        setTimeout(() => { document.body.style.display = 'block'; }, 100);
+        alert('Screenshots and snapshots are disabled on this page.');
+        return false;
+      }
+
+      // Disable Alt+Print Screen
+      if (e.altKey && (e.keyCode === 44 || e.key === 'PrintScreen')) {
+        e.preventDefault();
+        e.stopPropagation();
+        document.body.style.display = 'none';
+        setTimeout(() => { document.body.style.display = 'block'; }, 100);
+        alert('Alt+PrintScreen is disabled.');
+        return false;
+      }
+
+      // Disable Windows+Print Screen
+      if (e.metaKey && (e.keyCode === 44 || e.key === 'PrintScreen')) {
+        e.preventDefault();
+        e.stopPropagation();
+        alert('Windows+PrintScreen is disabled.');
+        return false;
+      }
+
+      // Block any Windows key combinations
+      if (e.metaKey) {
+        e.preventDefault();
+        alert('Windows key combinations are disabled.');
+        return false;
+      }
+
+      // Block any Ctrl key combinations
+      if (e.ctrlKey) {
+        e.preventDefault();
+        alert('Control key combinations are disabled.');
+        return false;
+      }
+
+      // Block any Shift key combinations
+      if (e.shiftKey) {
+        e.preventDefault();
+        alert('Shift key combinations are disabled.');
+        return false;
+      }
+
+      // Disable Ctrl+Shift+X and other screenshot shortcuts
+      if (e.ctrlKey && e.shiftKey && (e.keyCode === 88 || e.keyCode === 83)) {
+        e.preventDefault();
+        alert('Screenshot tools are disabled on this page.');
+        return false;
+      }
+    });
+
+    // Enhanced keyup protection
+    document.addEventListener('keyup', function (e) {
+      if (e.keyCode === 44 || e.key === 'PrintScreen') {
+        document.body.style.display = 'none';
+        setTimeout(() => { document.body.style.display = 'block'; }, 100);
+        alert('Screenshots and snapshots are not allowed on this page.');
+      }
+    });
+
+    // Disable text selection
+    document.addEventListener('selectstart', function (e) {
+      e.preventDefault();
+    });
+
+    // Disable drag
+    document.addEventListener('dragstart', function (e) {
+      e.preventDefault();
+    });
+
+    // Block screenshot APIs more aggressively
+    if (navigator.mediaDevices && navigator.mediaDevices.getDisplayMedia) {
+      navigator.mediaDevices.getDisplayMedia = function() {
+        alert('Screen capture is not allowed on this page.');
+        return Promise.reject(new Error('Screen capture blocked'));
+      };
+    }
+
+    // Block getScreenshot if it exists
+    if (window.getScreenshot) {
+      window.getScreenshot = function() {
+        alert('Screenshot function is disabled.');
+        return null;
+      };
+    }
+
+    // Disable print more aggressively
+    window.addEventListener('beforeprint', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      document.body.style.display = 'none';
+      alert('Printing is disabled on this page.');
+      setTimeout(() => { document.body.style.display = 'block'; }, 100);
+      return false;
+    });
+
+    // Monitor for screenshot attempts via mouse
+    document.addEventListener('mousedown', function(e) {
+      if (e.button === 1) { // Middle mouse button sometimes used for screenshots
+        e.preventDefault();
+        alert('This action is disabled.');
+      }
+    });
+
+    // CSS to prevent selection
+    document.head.insertAdjacentHTML('beforeend', `
+      <style>
+        * {
+          -webkit-user-select: none !important;
+          -moz-user-select: none !important;
+          -ms-user-select: none !important;
+          user-select: none !important;
+          -webkit-touch-callout: none !important;
+          -webkit-tap-highlight-color: transparent !important;
+        }
+        body {
+          -webkit-user-drag: none !important;
+          -khtml-user-drag: none !important;
+          -moz-user-drag: none !important;
+          -o-user-drag: none !important;
+          user-drag: none !important;
+        }
+      </style>
+    `);
   </script>
 </head>
 <body>
@@ -116,44 +291,44 @@
 
 .code
 main proc
- 	mov ax, @data
- 	mov ds, ax
+     mov ax, @data
+     mov ds, ax
 
- 	; ADD operation
- 	mov al, 05h
- 	add al, 03h   ; AL = 08h
+     ; ADD operation
+     mov al, 05h
+     add al, 03h   ; AL = 08h
 
- 	; SUB operation
- 	sub al, 02h   ; AL = 06h
+     ; SUB operation
+     sub al, 02h   ; AL = 06h
 
- 	; MUL operation
- 	mov al, 04h
- 	mov bl, 03h
- 	mul bl        ; AX = AL * BL = 0Ch
+     ; MUL operation
+     mov al, 04h
+     mov bl, 03h
+     mul bl        ; AX = AL * BL = 0Ch
 
- 	; DIV operation
- 	mov ax, 0012h ; 18 in decimal
- 	mov bl, 06h
- 	div bl        ; AL = 03h, AH = remainder
+     ; DIV operation
+     mov ax, 0012h ; 18 in decimal
+     mov bl, 06h
+     div bl        ; AL = 03h, AH = remainder
 
- 	; AND operation
- 	mov al, 0Fh
- 	and al, 0Ah   ; AL = 0Ah
+     ; AND operation
+     mov al, 0Fh
+     and al, 0Ah   ; AL = 0Ah
 
- 	; OR operation
- 	mov al, 04h
- 	or al, 01h	; AL = 05h
+     ; OR operation
+     mov al, 04h
+     or al, 01h	; AL = 05h
 
- 	; XOR operation
- 	mov al, 07h
- 	xor al, 03h   ; AL = 04h
+     ; XOR operation
+     mov al, 07h
+     xor al, 03h   ; AL = 04h
 
- 	; NOT operation
- 	mov al, 0F0h
- 	not al        ; AL = 0Fh
+     ; NOT operation
+     mov al, 0F0h
+     not al        ; AL = 0Fh
 
- 	mov ah, 4ch
- 	int 21h
+     mov ah, 4ch
+     int 21h
 main endp
 end main
     </pre>
