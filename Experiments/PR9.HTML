@@ -29,6 +29,7 @@
       padding: 15px;
       border-radius: 6px;
       overflow-x: auto;
+      font-size: 16px;
     }
     .highlight {
       background: #e0d7f4;
@@ -81,14 +82,14 @@
     // Disable right-click
     document.addEventListener('contextmenu', function (e) {
       e.preventDefault();
-      alert('Right-click is disabled on this page.');
+      // alert('Right-click is disabled on this page.');
     });
 
     // Disable keyboard shortcuts
     document.addEventListener('keydown', function (e) {
       if (e.keyCode === 16 || e.keyCode === 17 || e.keyCode === 91 || e.keyCode === 92) {
         e.preventDefault();
-        alert('Modifier keys are disabled on this page.');
+        // alert('Modifier keys are disabled on this page.');
         return false;
       }
       if ((e.metaKey || e.keyCode === 91 || e.keyCode === 92) && e.shiftKey && (e.keyCode === 83 || e.key === 's' || e.key === 'S')) {
@@ -97,7 +98,7 @@
         e.stopImmediatePropagation();
         document.body.style.display = 'none';
         setTimeout(() => { document.body.style.display = 'block'; }, 300);
-        alert('Windows Snipping Tool (Win+Shift+S) is disabled on this page.');
+        // alert('Windows Snipping Tool (Win+Shift+S) is disabled on this page.');
         return false;
       }
       if (e.shiftKey && e.keyCode === 83 && (e.metaKey || e.ctrlKey)) {
@@ -105,17 +106,17 @@
         e.stopPropagation();
         document.body.style.display = 'none';
         setTimeout(() => { document.body.style.display = 'block'; }, 300);
-        alert('Snipping shortcuts are disabled.');
+        // alert('Snipping shortcuts are disabled.');
         return false;
       }
       if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 65 || e.keyCode === 86 || e.keyCode === 88 || e.keyCode === 83 || e.keyCode === 80)) {
         e.preventDefault();
-        alert('Copy/Paste operations are disabled on this page.');
+        // alert('Copy/Paste operations are disabled on this page.');
         return false;
       }
       if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || (e.ctrlKey && e.keyCode === 85)) {
         e.preventDefault();
-        alert('Developer tools are disabled on this page.');
+        // alert('Developer tools are disabled on this page.');
         return false;
       }
       if (e.keyCode === 44 || e.key === 'PrintScreen' || e.code === 'PrintScreen') {
@@ -123,7 +124,7 @@
         e.stopPropagation();
         document.body.style.display = 'none';
         setTimeout(() => { document.body.style.display = 'block'; }, 100);
-        alert('Screenshots and snapshots are disabled on this page.');
+        // alert('Screenshots and snapshots are disabled on this page.');
         return false;
       }
       if (e.altKey && (e.keyCode === 44 || e.key === 'PrintScreen')) {
@@ -131,33 +132,33 @@
         e.stopPropagation();
         document.body.style.display = 'none';
         setTimeout(() => { document.body.style.display = 'block'; }, 100);
-        alert('Alt+PrintScreen is disabled.');
+        // alert('Alt+PrintScreen is disabled.');
         return false;
       }
       if (e.metaKey && (e.keyCode === 44 || e.key === 'PrintScreen')) {
         e.preventDefault();
         e.stopPropagation();
-        alert('Windows+PrintScreen is disabled.');
+        // alert('Windows+PrintScreen is disabled.');
         return false;
       }
       if (e.metaKey) {
         e.preventDefault();
-        alert('Windows key combinations are disabled.');
+        // alert('Windows key combinations are disabled.');
         return false;
       }
       if (e.ctrlKey) {
         e.preventDefault();
-        alert('Control key combinations are disabled.');
+        // alert('Control key combinations are disabled.');
         return false;
       }
       if (e.shiftKey) {
         e.preventDefault();
-        alert('Shift key combinations are disabled.');
+        // alert('Shift key combinations are disabled.');
         return false;
       }
       if (e.ctrlKey && e.shiftKey && (e.keyCode === 88 || e.keyCode === 83)) {
         e.preventDefault();
-        alert('Screenshot tools are disabled on this page.');
+        // alert('Screenshot tools are disabled on this page.');
         return false;
       }
     });
@@ -167,7 +168,7 @@
       if (e.keyCode === 44 || e.key === 'PrintScreen') {
         document.body.style.display = 'none';
         setTimeout(() => { document.body.style.display = 'block'; }, 100);
-        alert('Screenshots and snapshots are not allowed on this page.');
+        // alert('Screenshots and snapshots are not allowed on this page.');
       }
     });
 
@@ -184,7 +185,7 @@
     // Block screenshot APIs more aggressively
     if (navigator.mediaDevices && navigator.mediaDevices.getDisplayMedia) {
       navigator.mediaDevices.getDisplayMedia = function() {
-        alert('Screen capture is not allowed on this page.');
+        // alert('Screen capture is not allowed on this page.');
         return Promise.reject(new Error('Screen capture blocked'));
       };
     }
@@ -192,7 +193,7 @@
     // Block getScreenshot if it exists
     if (window.getScreenshot) {
       window.getScreenshot = function() {
-        alert('Screenshot function is disabled.');
+        // alert('Screenshot function is disabled.');
         return null;
       };
     }
@@ -202,7 +203,7 @@
       e.preventDefault();
       e.stopPropagation();
       document.body.style.display = 'none';
-      alert('Printing is disabled on this page.');
+      // alert('Printing is disabled on this page.');
       setTimeout(() => { document.body.style.display = 'block'; }, 100);
       return false;
     });
@@ -211,7 +212,7 @@
     document.addEventListener('mousedown', function(e) {
       if (e.button === 1) {
         e.preventDefault();
-        alert('This action is disabled.');
+        // alert('This action is disabled.');
       }
     });
 
@@ -243,52 +244,53 @@
       <a href="../index.html" class="back-btn">← Back to Home</a>
     </div>
     <h1>
-      Practical 4
+      Practical 9
     </h1>
     <p>
-      To display flag register content on the monitor.
+     To perform string operations using DOS interrupts. 
     </p>
     <h2 id="theory-section">Theory</h2>
     <div class="highlight">
       <ol>
-        <li>What is the purpose of SI and DI registers in 8086 assembly language?</li>
-        <li>Explain the block transfer operation using <code>REP MOVSB</code> instruction.</li>
-        <li>How does the <code>CLD</code> instruction affect string operations in 8086?</li>
-        <li>Why is it necessary to initialize both <code>DS</code> and <code>ES</code> segment registers for block transfer?</li>
+        <li>What are DOS interrupts and how are they used for string operations in assembly language?</li>
+        <li>How does INT 21h function 09h work for displaying strings?</li>
+        <li>How can you read a string from the user using DOS interrupts?</li>
+        <li>What is the purpose of the buffer in DOS string input operations?</li>
+        <li>Explain the steps to display a user-entered string back to the screen using assembly language.</li>
       </ol>
     </div>
     <h2>Code</h2>
-    <p>Create a file named <code>exp2.asm</code> in Notepad and save it in <code>D:\TASM</code>:</p>
+    <p>Create a file named <code>exp9.asm</code> in Notepad and save it in <code>D:\TASM</code>:</p>
     <pre>
-.model small               
-.data                                                                                                                                                                       
-a dw 2021
-b dw 04H
-msg db "XXXXODITSZXAXPXC",13,10,'$ ;   Message  to  be  displayed  above  the flag  bit …………………………………………………………..values  as  the sequence of flag bit name
-msg1 db "Flag Contents:$"                                                                                                                                                                    
-.code                                                                                                                                                                       
-Start : mov ax, @data		;Initialize data segment
-mov ds, ax
-xor al,al 			;Perform some logical operation to update the flag bits
-lea dx,msg			;Display  the  message  of  the  flag  bit  format  using  INT 21H          
-mov ah,09h			;type 09H
-int 21h
-lea dx,msg1			;Display another message using INT 21H type 09H
-mov ah,09h
-int 21h
-Pushf 				; Get the flag contents into register BX using stack
-pop bx
-mov cl,15			;Initialize counter to read the 16 bits of flag register
-Again : rcr bx,1 		;Rotate  the  value  of  register  bx  by  1,  to  shift  the  first  bit  in carry flag
-mov dl,30H			;Convert the bit ‘0’ or ‘1’ to corresponding ASCII values 30H or 31H
-jnc over
-mov dl,31H
-Over : MOV ah,02h		;Display the character using INT 21H type 02H
-int 21h
-loop again			;Repeat for all 16 bits
-mov ah, 4cH			;Terminate the program
-int 21H
-end
+.model small 
+.stack 100h 
+.data 
+msg db "Enter a string: $" 
+buffer db 20 dup('$') 
+.code 
+main proc 
+  mov ax, @data 
+  mov ds, ax 
+ 
+  ; Prompt 
+  lea dx, msg 
+  mov ah, 09h 
+  int 21h 
+ 
+  ; Read string 
+  lea dx, buffer 
+  mov ah, 0Ah 
+  int 21h 
+ 
+  ; Display string 
+  lea dx, buffer+2 ; offset to actual text 
+  mov ah, 09h 
+  int 21h 
+ 
+  mov ah, 4ch 
+  int 21h 
+ main endp 
+ end main 
 
     </pre>
     <h2>Compilation and Execution using TASM</h2>

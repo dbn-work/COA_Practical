@@ -29,6 +29,7 @@
       padding: 15px;
       border-radius: 6px;
       overflow-x: auto;
+      font-size: 16px;
     }
     .highlight {
       background: #e0d7f4;
@@ -44,7 +45,6 @@
       background-color: #4b0082;
       color: #fff;
       padding: 8px 14px;
-      border-radius: 6px;
       text-decoration: none;
       margin: 5px 5px 15px 0;
     }
@@ -117,14 +117,14 @@
       // Disable Ctrl+C, Ctrl+A, Ctrl+V, Ctrl+X, Ctrl+S, Ctrl+P
       if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 65 || e.keyCode === 86 || e.keyCode === 88 || e.keyCode === 83 || e.keyCode === 80)) {
         e.preventDefault();
-        alert('Copy/Paste operations are disabled on this page.');
+        // alert('Copy/Paste operations are disabled on this page.');
         return false;
       }
       
       // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
       if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || (e.ctrlKey && e.keyCode === 85)) {
         e.preventDefault();
-        alert('Developer tools are disabled on this page.');
+        // alert('Developer tools are disabled on this page.');
         return false;
       }
 

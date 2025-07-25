@@ -10,14 +10,12 @@
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #e9eef5;
       color: #333;
       line-height: 1.6;
     }
-
     header, footer {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: #fff;
@@ -26,7 +24,6 @@
       position: relative;
       text-align: center;
     }
-
     .header-container {
       max-width: 960px;
       margin: 0 auto;
@@ -36,7 +33,6 @@
       align-items: center;
       position: relative;
     }
-
     h1 {
       font-size: 1.8rem;
       margin: 0;
@@ -44,19 +40,16 @@
       font-weight: 600;
       text-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
-
     .header-buttons {
       display: flex;
       gap: 12px;
       align-items: center;
       flex-wrap: nowrap;
     }
-
     .dropdown {
       position: relative;
       display: inline-block;
     }
-
     .dropdown-content {
       display: none;
       position: absolute;
@@ -72,7 +65,6 @@
       animation: slideDown 0.4s ease;
       border: 1px solid rgba(255,255,255,0.2);
     }
-
     .dropdown-content::before {
       content: '';
       position: absolute;
@@ -82,11 +74,9 @@
       height: 10px;
       background: transparent;
     }
-
     .dropdown:hover .dropdown-content {
       display: block;
     }
-
     .dropdown-btn {
       background: linear-gradient(135deg, #ff6b6b, #ee5a24);
       color: white;
@@ -101,23 +91,19 @@
       white-space: nowrap;
       position: relative;
     }
-
     .info-btn {
       background: linear-gradient(135deg, #4ecdc4, #44a08d) !important;
       box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3) !important;
     }
-
     .dropdown-btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
       background: linear-gradient(135deg, #ee5a24, #ff6b6b);
     }
-
     .info-btn:hover {
       box-shadow: 0 6px 20px rgba(78, 205, 196, 0.4) !important;
       background: linear-gradient(135deg, #44a08d, #4ecdc4) !important;
     }
-
     .dropdown-item {
       color: #2c3e50;
       padding: 15px 20px;
@@ -128,7 +114,6 @@
       position: relative;
       background: transparent;
     }
-
     .dropdown-item:hover {
       background: linear-gradient(135deg, #667eea, #764ba2);
       color: white;
@@ -302,60 +287,60 @@
         </a>
       </div>
       <div class="experiment-card">
-        <a href="Experiments/pr2.html" class="experiment-link">
+        <a href="Experiments/PR2.html" class="experiment-link">
           Experiment 2: ALU Operations (ADD, SUB, MUL, DIV, AND, OR, XOR, NOT) in 8086 using MASM & Debug
         </a>
       </div>
-      <!-- <div class="experiment-card">
-        <a href="Experiments/pr3 .html" class="experiment-link">
+      <div class="experiment-card">
+        <a href="Experiments/PR3.html" class="experiment-link">
           Experiment 3: Block Transfer and Block Exchange using Index Registers
         </a>
       </div>
       <div class="experiment-card">
-        <a href="Experiments/pr4.html" class="experiment-link">
+        <a href="Experiments/PR4.html" class="experiment-link">
           Experiment 4: Displaying 8086 Processor’s Flag Register Content on Monitor
         </a>
       </div>
       <div class="experiment-card">
-        <a href="Experiments/pr5.html" class="experiment-link">
+        <a href="Experiments/PR5.html" class="experiment-link">
           Experiment 5: Two 8-bit BCD Additions with Keyboard Input & Output using INT 21H
         </a>
       </div>
       <div class="experiment-card">
-        <a href="Experiments/pr6.html" class="experiment-link">
+        <a href="Experiments/PR6.html" class="experiment-link">
           Experiment 6: Designing 4x4 Memory using 1x1 Memory Chips (COA Virtual Lab)
         </a>
       </div>
       <div class="experiment-card">
-        <a href="Experiments/pr7.html" class="experiment-link">
+        <a href="Experiments/PR7.html" class="experiment-link">
           Experiment 7: Booth’s Multiplication Algorithm using C
         </a>
       </div>
       <div class="experiment-card">
-        <a href="Experiments/pr8.html" class="experiment-link">
+        <a href="Experiments/PR8.html" class="experiment-link">
           Experiment 8: Division Algorithm (Non-Restoring/Restoring) using C
         </a>
       </div>
       <div class="experiment-card">
-        <a href="Experiments/pr9.html" class="experiment-link">
+        <a href="Experiments/PR9.html" class="experiment-link">
           Experiment 9: String Operations in 8086 using DOS/BIOS Interrupts (MASM)
         </a>
       </div>
       <div class="experiment-card">
-        <a href="Experiments/pr10.html" class="experiment-link">
+        <a href="Experiments/PR10.html" class="experiment-link">
           Experiment 10: Cursor Activity (Hide/Box Cursor) using INT 10H
         </a>
       </div>
       <div class="experiment-card">
-        <a href="Experiments/pr11.html" class="experiment-link">
+        <a href="Experiments/PR11.html" class="experiment-link">
           Experiment 11: Number Conversion (HEX to BCD, ASCII to BCD, BCD to ASCII) using MASM
         </a>
       </div>
       <div class="experiment-card">
-        <a href="Experiments/pr12.html" class="experiment-link">
+        <a href="Experiments/PR12.html" class="experiment-link">
           Experiment 12: File Operations using DOS Interrupts (C/MASM)
         </a>
-      </div> -->
+      </div>
     </section>
   </main>
   <footer>
@@ -365,7 +350,7 @@
     // Disable right-click
     document.addEventListener('contextmenu', function (e) {
       e.preventDefault();
-      alert('Right-click is disabled on this page.');
+      // alert('Right-click is disabled on this page.');
     });
 
     // Disable keyboard shortcuts
@@ -373,35 +358,35 @@
       // Disable Ctrl+C, Ctrl+A, Ctrl+V, Ctrl+X, Ctrl+S, Ctrl+P
       if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 65 || e.keyCode === 86 || e.keyCode === 88 || e.keyCode === 83 || e.keyCode === 80)) {
         e.preventDefault();
-        alert('Copy/Paste operations are disabled on this page.');
+        // alert('Copy/Paste operations are disabled on this page.');
         return false;
       }
       
       // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
       if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || (e.ctrlKey && e.keyCode === 85)) {
         e.preventDefault();
-        alert('Developer tools are disabled on this page.');
+        // alert('Developer tools are disabled on this page.');
         return false;
       }
 
       // Disable Print Screen, Alt+Print Screen, Windows+Print Screen
       if (e.keyCode === 44 || (e.altKey && e.keyCode === 44) || (e.metaKey && e.keyCode === 44)) {
         e.preventDefault();
-        alert('Screenshots and snapshots are disabled on this page.');
+        // alert('Screenshots and snapshots are disabled on this page.');
         return false;
       }
 
       // Disable Windows+Shift+S (Snipping Tool)
       if (e.metaKey && e.shiftKey && e.keyCode === 83) {
         e.preventDefault();
-        alert('Snipping tool is disabled on this page.');
+        // alert('Snipping tool is disabled on this page.');
         return false;
       }
 
       // Disable Ctrl+Shift+X (some screenshot tools)
       if (e.ctrlKey && e.shiftKey && e.keyCode === 88) {
         e.preventDefault();
-        alert('Screenshot tools are disabled on this page.');
+        // alert('Screenshot tools are disabled on this page.');
         return false;
       }
     });
@@ -419,7 +404,7 @@
     // Additional screenshot protection
     document.addEventListener('keyup', function (e) {
       if (e.keyCode === 44) {
-        alert('Screenshots and snapshots are not allowed on this page.');
+        // alert('Screenshots and snapshots are not allowed on this page.');
       }
     });
 
@@ -447,7 +432,7 @@
     if (navigator.mediaDevices && navigator.mediaDevices.getDisplayMedia) {
       const originalGetDisplayMedia = navigator.mediaDevices.getDisplayMedia;
       navigator.mediaDevices.getDisplayMedia = function() {
-        alert('Screen capture is not allowed on this page.');
+        // alert('Screen capture is not allowed on this page.');
         return Promise.reject(new Error('Screen capture blocked'));
       };
     }
@@ -455,7 +440,7 @@
     // Disable print
     window.addEventListener('beforeprint', function(e) {
       e.preventDefault();
-      alert('Printing is disabled on this page.');
+      // alert('Printing is disabled on this page.');
       return false;
     });
   </script>
